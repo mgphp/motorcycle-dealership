@@ -1,0 +1,285 @@
+// Set some variables here
+$black: #000;
+$btn-disabled: #f4f4f4;
+$grey: #dfdfdf;
+$btnGrey: #f4f4f4;
+$idGrey: #a7a9ac;
+$white: #fff;
+
+// Some mixins here
+
+//******************************************************************************************/
+//* HTML5 Reset
+//******************************************************************************************/
+
+body, div,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section, main {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  color: rgb(0, 0, 0);
+  font-size: 100%;
+  font-family: "Helvetica Neue";
+  box-sizing: border-box;
+}
+
+h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  @media screen and (min-width: 600px) {
+    font-size: 1.5rem;
+    line-height: 32px;
+  }
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+p {
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+
+  @media screen and (min-width: 600px) {
+    font-size: 1.0625rem;
+    line-height: 25px;
+  }
+  font-family: "Helvetica-light";
+}
+
+.hidden {
+  display: none !important;
+}
+
+label {
+  font-size: 0.9375rem;
+  line-height: 1.375rem;
+  display: block;
+  width: 100%;
+}
+
+input[type='text'], input[type='email'] {
+  padding: 10px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 1px solid $grey;
+  width: 100%;
+}
+
+input[type=checkbox], input[type=radio] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+}
+
+input[type=radio] {
+  bottom: 2px;
+}
+
+.map-wrapper {
+  @media screen and (min-width: 600px) {
+    height: 530px;
+  }
+  height: 200px;
+  position: relative;
+  margin-bottom: 20px;
+
+}
+
+.button__block {
+  width: 100%;
+}
+
+.btn {
+  appearance: none;
+  padding: 12px 20px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: none;
+  font-size: 0.9375rem;
+  font-family: "Helvetica-light";
+  text-transform: uppercase;
+
+  &__search {
+    margin-top: 41px
+  }
+
+  &__location, &__continue {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  &--grey {
+    background-color: $btnGrey;
+    border: 1px solid $btnGrey;
+    color: rgb(150, 153, 156);
+  }
+
+  &--dark {
+    background-color: $black;
+    border: 1px solid $black;
+    color: rgb(255, 255, 255);
+  }
+
+  &--active {
+    background-color: $black;
+    border: 1px solid $black;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.container {
+  padding: 32px 15px 0;
+  width: 100%;
+
+  @media screen and (min-width: 600px) {
+    max-width: 755px;
+    margin: 0 auto;
+  }
+
+  form {
+
+    .form__input {
+      border: 1px solid $black;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .form__group {
+      margin-top: 20px;
+
+      ul {
+        display: flex;
+      }
+    }
+
+    .form__controls {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .find-dealership {
+
+    .form__upper {
+      @media screen and (min-width: 600px) {
+        display: flex;
+        flex-direction: row;
+      }
+      .form__group {
+        @media screen and (min-width: 600px) {
+          flex: 1 0 50%;
+        }
+        width: 60%;
+        float: left;
+      }
+
+      .btn__search {
+        @media screen and (min-width: 600px) {
+          //flex: 1 0 25%;
+          margin-right: 15px;
+        }
+        width: 40%;
+      }
+
+      .btn__location {
+        @media screen and (min-width: 600px) {
+          flex: 1 0 25%;
+          margin-top: 41px;
+        }
+      }
+
+      input {
+        width: calc(100% - 20px);
+      }
+    }
+  }
+}
+
+.results {
+  margin: 20px 0;
+
+  @media screen and (min-width: 600px) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__left-block, &__right-block {
+    width: 100%;
+  }
+
+  &__left-block {
+    margin-right: 20px;
+  }
+
+  .result-item {
+    position: relative;
+    padding: 25px 15px;
+    border: 1px solid #e4e5e6;
+    margin-bottom: 12px;
+    border-radius: 2px;
+
+    &__id {
+      position: absolute;
+      top: 3px;
+      right: 0;
+
+      span {
+        padding: 4px 8px;
+        background-color: $idGrey;
+        color: $white
+      }
+    }
+
+    &__name {
+      font-size: .9375rem;
+      text-transform: uppercase;
+    }
+
+    &__address1, &__address2, &__postcode {
+      font-size: 1rem;
+    }
+  }
+
+  .result-item.selected {
+    border: 1px solid $black !important;
+
+    span {
+      background-color: $black !important;
+    }
+  }
+
+  .grid__results {
+
+  }
+}
+
+.selected-item {
+  padding: 40px;
+  border: 1px solid #e4e5e6;
+  border-radius: 2px 2px 2px 2px;
+  margin-bottom: 20px;
+}
