@@ -1,14 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 class SelectedDealers extends React.Component {
-  constructor(props) {
-    super(props);
-
-
-  }
 
   render() {
 

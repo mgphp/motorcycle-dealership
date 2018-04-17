@@ -1,13 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Map, GoogleApiWrapper,Marker} from 'google-maps-react';
+import {Map, GoogleApiWrapper} from 'google-maps-react';
 import DealershipResults from './DealershipResults';
 import Dealerships from '../data/dealerships';
-import Maps from './Map';
-// import MapMarkers from './MapObjects';
-
-console.log(Maps);
 
 class FindDealership extends React.Component {
   constructor(props) {
@@ -73,8 +69,8 @@ class FindDealership extends React.Component {
         ReactDOM.render(
           <Map google={this.props.google}
                initialCenter={{
-                 lat: 40.854885,
-                 lng: -88.081807
+                 lat: 51.509865,
+                 lng: -0.118092
                }}
                center={{
                  lat: g_lat,
@@ -83,14 +79,6 @@ class FindDealership extends React.Component {
                style={{width: '100%', height: '100%', position: 'relative'}}
                className={'map'}
                zoom={14}>
-            <Marker
-              title={'The marker`s title will appear as a tooltip.'}
-              name={'SOMA'}
-              position={{lat: 37.778519, lng: -122.405640}} />
-            <Marker
-              name={'Dolores park'}
-              position={{lat: 37.759703, lng: -122.428093}} />
-            <Marker />
           </Map>
 
           ,document.getElementById('map-container'));

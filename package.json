@@ -92,6 +92,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "node-sass": "^4.8.3",
     "react-select": "^1.2.1",
     "sass-loader": "^6.0.7",

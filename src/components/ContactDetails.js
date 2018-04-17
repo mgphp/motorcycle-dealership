@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SelectedDealers from './SelectedDealers';
+import axios from 'axios';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
@@ -20,7 +21,23 @@ class ContactDetails extends React.Component {
 
   handleChange = (selectedOption) => {
     this.setState({selectedOption});
-    console.log(`Selected: ${selectedOption.label}`);
+
+  }
+
+  handleSubmit() {
+    //Do our api call using axios here
+    // const url = '';
+    // axios.post(url, {
+    //
+    // })
+    //   .then(function (response) {
+    //
+    //   })
+    //   .catch(function (error) {
+    //
+    //   });
+    //
+    // e.preventDefault();
   }
 
   render() {
@@ -43,101 +60,101 @@ class ContactDetails extends React.Component {
                   value={value}
                   onChange={this.handleChange}
                   options={[
-                    { value: 'mr', label: 'Mr' },
-                    { value: 'mrs', label: 'Mrs' },
-                    { value: 'miss', label: 'Miss' },
+                    {value: 'mr', label: 'Mr'},
+                    {value: 'mrs', label: 'Mrs'},
+                    {value: 'miss', label: 'Miss'},
                   ]}
                 />
               </div>
             </li>
             <li>
               <div className="form__group">
-              <label>First Name</label>
-              <input type="text" name="firstName" value={this.state.firstName} placeholder="Firstname"/>
+                <label>First Name</label>
+                <input type="text" name="firstName" value={this.state.firstName} placeholder="Firstname"/>
               </div>
             </li>
             <li>
               <div className="form__group">
-              <label>Surname</label>
-              <input type="text" name="surname" value={this.state.surname} placeholder="Surname"/>
+                <label>Surname</label>
+                <input type="text" name="surname" value={this.state.surname} placeholder="Surname"/>
               </div>
             </li>
             <li>
               <div className="form__group">
-              <label>Email</label>
-              <input type="text" name="email" value={this.state.email} placeholder="Email"/>
+                <label>Email</label>
+                <input type="text" name="email" value={this.state.email} placeholder="Email"/>
               </div>
             </li>
             <li>
               <div className="form__group">
-              <label>Phone</label>
-              <input type="text" name="phone" value={this.state.phone} placeholder="Phone"/>
+                <label>Phone</label>
+                <input type="text" name="phone" value={this.state.phone} placeholder="Phone"/>
               </div>
             </li>
             <li>
               <div className="form__group">
-              <p>When do you plan to purchase your motorcycle?</p>
-              <div className="checkbox-group">
-              <ul>
-                <li>
-                  <label>
-                  <input name="03months" type="checkbox"/>
-                  0 - 3 months</label>
-                </li>
-                <li>
-                  <label>
-                  <input name="46months" type="checkbox"/>
-                  4 - 6 months</label>
-                </li>
-              </ul>
-                <ul>
-                <li>
-                  <label>
-                  <input name="712months" type="checkbox"/>
-                  7 - 12 months</label>
-                </li>
-                <li>
-                  <label>
-                  <input name="unknown" type="checkbox"/>
-                  Unknown</label>
-                </li>
-              </ul>
-              </div>
+                <p>When do you plan to purchase your motorcycle?</p>
+                <div className="checkbox-group">
+                  <ul>
+                    <li>
+                      <label>
+                        <input name="03months" type="checkbox"/>
+                        0 - 3 months</label>
+                    </li>
+                    <li>
+                      <label>
+                        <input name="46months" type="checkbox"/>
+                        4 - 6 months</label>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <label>
+                        <input name="712months" type="checkbox"/>
+                        7 - 12 months</label>
+                    </li>
+                    <li>
+                      <label>
+                        <input name="unknown" type="checkbox"/>
+                        Unknown</label>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </li>
             <li>
               <div className="form__group">
-              <h3>Contact preferences</h3>
-              <p>Please select which communication channel you would like us to keep you informed of future news and
-                events.</p>
-              <p>We can conduct you about Products, Services, Events and Offers by.</p>
-              <div className="checkbox-group">
-              <ul>
-                <li>
-                  <label>
-                  <input name="email" type="checkbox"/>
-                  Email</label>
-                </li>
-                <li>
-                  <label>
-                  <input name="text" type="checkbox"/>
-                  Text</label>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <label>
-                  <input name="telephone" type="checkbox"/>
-                 Telephone</label>
-                </li>
-                <li>
-                  <label>
-                  <input name="unknown" type="checkbox"/>
-                  None of these</label>
-                </li>
-              </ul>
+                <h3>Contact preferences</h3>
+                <p>Please select which communication channel you would like us to keep you informed of future news and
+                  events.</p>
+                <p>We can conduct you about Products, Services, Events and Offers by.</p>
+                <div className="checkbox-group">
+                  <ul>
+                    <li>
+                      <label>
+                        <input name="email" type="checkbox"/>
+                        Email</label>
+                    </li>
+                    <li>
+                      <label>
+                        <input name="text" type="checkbox"/>
+                        Text</label>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <label>
+                        <input name="telephone" type="checkbox"/>
+                        Telephone</label>
+                    </li>
+                    <li>
+                      <label>
+                        <input name="unknown" type="checkbox"/>
+                        None of these</label>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
             </li>
             <li>
               <div className="form__group">
@@ -151,9 +168,8 @@ class ContactDetails extends React.Component {
             </li>
           </ul>
         </form>
-        <div className="thank-you">
+        <div className="thank-you hidden">
           <div className="thank-you__title">Thank you</div>
-
 
         </div>
       </section>
