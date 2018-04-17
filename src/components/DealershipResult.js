@@ -8,11 +8,13 @@ const DealershipResult = ({dealership, onDealershipSelect,id}) => {
     dealership.id = id;
     return (
       <li data-id={id} onClick={() => onDealershipSelect(dealership)} className="result-item">
-        <div className="result-item__id"><span>{id}</span></div>
-        <div className="result-item__name">{name}</div>
-        <div className="result-item__address1">{address_line1}</div>
-        <div className="result-item__address2">{address_line2}</div>
-        <div className="result-item__postcode">{postcode}</div>
+        <div className="result-id"><span>{id}</span></div>
+        <div className="result-item__wrapper">
+            <div className="result-item__name">{name}</div>
+            <div className="result-item__address1">{address_line1}</div>
+            <div className="result-item__address2">{address_line2}</div>
+            <div className="result-item__postcode">{postcode}</div>
+        </div>
       </li>
     )
 }

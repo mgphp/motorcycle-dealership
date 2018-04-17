@@ -1,33 +1,32 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 class SelectedDealers extends React.Component {
   constructor(props) {
     super(props);
+
+
   }
 
   render() {
-
-    const style = {
-      width: '200px',
-      height: '200px'
-    }
 
     return (
       <div className="selected-item">
         <div className="selected-item__title">Selected Dealership</div>
         <div className="selected-item__group">
-          <div style={style}>
-          <Map
-            google={this.props.google}
-            className="map"
-            initialCenter={{
-              lat: 51.509865,
-              lng: -0.118092
-            }}
-            style={{height: '280px !important', position: 'relative !important', width: '500px !important'}}
-            zoom={14}>
-          </Map>
+          <div className="map-selected">
+            <Map
+              google={this.props.google}
+              className="map"
+              initialCenter={{
+                lat: 51.509865,
+                lng: -0.118092
+              }}
+              style={{height: '100%', position: 'relative !important', width: '100%'}}
+              zoom={12}>
+            </Map>
           </div>
           <div className="result-item">
             <div className="result-item__name">Carl Rosner Motorcycles</div>

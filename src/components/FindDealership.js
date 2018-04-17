@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
-import {Map, GoogleApiWrapper} from 'google-maps-react';
+import {Map, GoogleApiWrapper,Marker} from 'google-maps-react';
 import DealershipResults from './DealershipResults';
 import Dealerships from '../data/dealerships';
+import Maps from './Map';
 // import MapMarkers from './MapObjects';
+
+console.log(Maps);
 
 class FindDealership extends React.Component {
   constructor(props) {
@@ -23,18 +27,8 @@ class FindDealership extends React.Component {
     e.preventDefault();
 
     let postcode = this.refs.postcode.value;
-    let geocoder = new window.google.maps.Geocoder();
 
-    geocoder.geocode({address: postcode},
-      function (results, status) {
-        let g_lat = results[0].geometry.location.lat();
-        let g_long = results[0].geometry.location.lng();
-        this.setState({
-          lat: g_lat,
-          lng: g_long
-        })
-      }.bind(this),
-    );
+    this.renderMap(postcode);
 
     let element = document.querySelector('.results');
     element.classList.remove('hidden');
@@ -44,6 +38,10 @@ class FindDealership extends React.Component {
 
     let listItem = document.querySelector('li.selected');
     let element = document.querySelector(`li[data-id="${dealership.id}"]`);
+    let btnContinue = document.querySelector('.btn__continue');
+    btnContinue.removeAttribute('disabled');
+    btnContinue.classList.remove('btn--grey');
+    btnContinue.classList.add('btn--active');
 
     // Remove active status if set
     if (listItem != null) {
@@ -55,6 +53,50 @@ class FindDealership extends React.Component {
     this.setState({
       dealershipSelect: dealership
     });
+
+    this.renderMap(dealership.postcode);
+
+  }
+
+  renderMap(postcode) {
+    let geocoder = new window.google.maps.Geocoder();
+
+    geocoder.geocode({address: postcode},
+      function (results, status) {
+        let g_lat = results[0].geometry.location.lat();
+        let g_long = results[0].geometry.location.lng();
+        this.setState({
+          lat: g_lat,
+          lng: g_long
+        });
+
+        ReactDOM.render(
+          <Map google={this.props.google}
+               initialCenter={{
+                 lat: 40.854885,
+                 lng: -88.081807
+               }}
+               center={{
+                 lat: g_lat,
+                 lng: g_long
+               }}
+               style={{width: '100%', height: '100%', position: 'relative'}}
+               className={'map'}
+               zoom={14}>
+            <Marker
+              title={'The marker`s title will appear as a tooltip.'}
+              name={'SOMA'}
+              position={{lat: 37.778519, lng: -122.405640}} />
+            <Marker
+              name={'Dolores park'}
+              position={{lat: 37.759703, lng: -122.428093}} />
+            <Marker />
+          </Map>
+
+          ,document.getElementById('map-container'));
+
+      }.bind(this),
+    );
   }
 
   changeStage(e) {
@@ -79,6 +121,7 @@ class FindDealership extends React.Component {
                 ref="postcode"
                 name="postcode"
                 placeholder="e.g M1 3BE"
+                required="required"
               />
             </div>
             <button className="btn btn__search btn--grey">Search</button>
@@ -87,20 +130,8 @@ class FindDealership extends React.Component {
         </form>
           <div className="results hidden">
             <div className="results__right-block">
-              <div className="map-wrapper" style={style}>
-              <Map
-                google={this.props.google}
-                className="map"
-                initialCenter={{
-                  lat: 51.509865,
-                  lng: -0.118092
-                }}
-
-
-                style={{height: '100%', position: 'relative !important', width: '100%'}}
-                zoom={14}>
-                {/*<MapMarkers dealership={Dealerships} />*/}
-              </Map>
+              <div className="map-wrapper">
+                <div id="map-container"></div>
               </div>
             </div>
             <div className="results__left-block">

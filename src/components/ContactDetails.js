@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SelectedDealers from './SelectedDealers';
-//import Select from 'react-select';
-//import 'react-select/dist/react-select.css';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 
 class ContactDetails extends React.Component {
@@ -37,6 +37,21 @@ class ContactDetails extends React.Component {
           <ul>
             <li>
               <div className="form__group">
+                <label className="form__group-title">Prefix</label>
+                <Select
+                  name="form-field-name"
+                  value={value}
+                  onChange={this.handleChange}
+                  options={[
+                    { value: 'mr', label: 'Mr' },
+                    { value: 'mrs', label: 'Mrs' },
+                    { value: 'miss', label: 'Miss' },
+                  ]}
+                />
+              </div>
+            </li>
+            <li>
+              <div className="form__group">
               <label>First Name</label>
               <input type="text" name="firstName" value={this.state.firstName} placeholder="Firstname"/>
               </div>
@@ -62,12 +77,12 @@ class ContactDetails extends React.Component {
             <li>
               <div className="form__group">
               <p>When do you plan to purchase your motorcycle?</p>
+              <div className="checkbox-group">
               <ul>
                 <li>
                   <label>
                   <input name="03months" type="checkbox"/>
                   0 - 3 months</label>
-
                 </li>
                 <li>
                   <label>
@@ -88,6 +103,7 @@ class ContactDetails extends React.Component {
                 </li>
               </ul>
               </div>
+              </div>
             </li>
             <li>
               <div className="form__group">
@@ -95,12 +111,12 @@ class ContactDetails extends React.Component {
               <p>Please select which communication channel you would like us to keep you informed of future news and
                 events.</p>
               <p>We can conduct you about Products, Services, Events and Offers by.</p>
+              <div className="checkbox-group">
               <ul>
                 <li>
                   <label>
                   <input name="email" type="checkbox"/>
                   Email</label>
-
                 </li>
                 <li>
                   <label>
@@ -120,6 +136,7 @@ class ContactDetails extends React.Component {
                   None of these</label>
                 </li>
               </ul>
+              </div>
             </div>
             </li>
             <li>
@@ -130,11 +147,17 @@ class ContactDetails extends React.Component {
               </div>
             </li>
             <li>
-              <button className="btn btn--full">Send Request</button>
+              <button className="btn btn__continue btn--grey">Send Request</button>
             </li>
           </ul>
         </form>
+        <div className="thank-you">
+          <div className="thank-you__title">Thank you</div>
+
+
+        </div>
       </section>
+
     )
   }
 }
